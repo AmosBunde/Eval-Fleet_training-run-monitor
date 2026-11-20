@@ -3,13 +3,15 @@
 import re
 
 import numpy as np
+import pytest
 
 from evalfleet.cli import main
 from evalfleet.evaluate import save_results
 from evalfleet.faults import FaultSpec
 from evalfleet.monitor import Alert, episodes, monitor_run
 from evalfleet.report import render
-from evalfleet.train import RunSpec, TrainConfig
+from evalfleet.runner import result_path
+from evalfleet.train import RunSpec, TrainConfig, validate_run_id
 
 
 def _faulty_run():
@@ -70,3 +72,33 @@ def test_cli_export_monitor_and_report(tmp_path, capsys):
 
     main(["report", "--run", str(run), "--out", str(tmp_path / "r.html")])
     assert "Run cli-demo" in (tmp_path / "r.html").read_text()
+
+
+BAD_IDS = ["../escape", "a/b", "/abs", "..", ".", "", "a b", "x\\y", "run\n", "r;rm"]
+
+
+def test_run_ids_that_could_leave_the_directory_are_refused(tmp_path):
+    for good in ("clean-00", "lr_spike-01", "v1.2_demo"):
+        assert validate_run_id(good) == good
+    for bad in BAD_IDS:
+        with pytest.raises(ValueError, match="unsafe run id"):
+            validate_run_id(bad)
+        with pytest.raises(ValueError):
+            result_path(tmp_path, bad)
+
+
+def test_report_refuses_a_result_file_with_a_crafted_run_id(tmp_path, monkeypatch, capsys):
+    score, regrade = _faulty_run()
+    spec = RunSpec("../../escaped", 1, FaultSpec(), TrainConfig())
+    run = tmp_path / "inner" / "deep" / "crafted.npz"
+    save_results(run, score, regrade, {"spec": spec.to_dict(), "ckpt_steps": spec.train.ckpt_steps})
+    monkeypatch.chdir(run.parent)
+    with pytest.raises(SystemExit, match="unsafe run id"):
+        main(["report", "--run", str(run)])
+    assert not (tmp_path / "escaped.html").exists()
+    assert not list(tmp_path.rglob("*.html"))
+    # An explicit output path is the caller's own choice and still works.
+    main(["report", "--run", str(run), "--out", str(tmp_path / "ok.html")])
+    assert (tmp_path / "ok.html").exists()
+    with pytest.raises(SystemExit, match="unsafe run id"):
+        main(["train", "--run-id", "../x", "--steps", "1"])
