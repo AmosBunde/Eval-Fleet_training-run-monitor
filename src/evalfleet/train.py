@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import math
 import random
+import re
 import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -37,6 +38,25 @@ class TrainConfig:
 
     def model_config(self) -> ModelConfig:
         return ModelConfig(VOCAB_SIZE, MAX_LEN, self.d_model, self.n_layers, self.n_heads)
+
+
+# fullmatch is used below: with match(), "$" would also accept a trailing newline.
+RUN_ID_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
+
+
+def validate_run_id(run_id: str) -> str:
+    """Return ``run_id`` if it is safe to use as a file or directory name, else raise.
+
+    Run ids end up in paths (checkpoint directories, result files, report names) and can
+    come from a result file somebody else wrote, so anything that could step outside the
+    target directory is refused.
+    """
+    if not isinstance(run_id, str) or not RUN_ID_PATTERN.fullmatch(run_id) or set(run_id) == {"."}:
+        raise ValueError(
+            f"unsafe run id {run_id!r}: use only letters, digits, '.', '_' and '-' "
+            "(and not '.' or '..')"
+        )
+    return run_id
 
 
 @dataclass(frozen=True)

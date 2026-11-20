@@ -14,7 +14,7 @@ from pathlib import Path
 
 from .evaluate import evaluate_run
 from .faults import GRADER_BUG_SKILLS, FaultSpec
-from .train import RunSpec, TrainConfig, train_run
+from .train import RunSpec, TrainConfig, train_run, validate_run_id
 
 # Faults start after one of these checkpoints (index into the 30 checkpoints of a run).
 ONSET_INDICES = (14, 17, 20, 15, 18, 16, 19)
@@ -60,7 +60,7 @@ def build_matrix(train: TrainConfig = TrainConfig()) -> list[RunSpec]:
 
 
 def result_path(results_dir: Path, run_id: str) -> Path:
-    return results_dir / "runs" / f"{run_id}.npz"
+    return results_dir / "runs" / f"{validate_run_id(run_id)}.npz"
 
 
 def run_one(spec: RunSpec, results_dir: Path, keep_checkpoints: bool = False) -> str:
@@ -68,7 +68,7 @@ def run_one(spec: RunSpec, results_dir: Path, keep_checkpoints: bool = False) ->
     out = result_path(results_dir, spec.run_id)
     if out.exists():
         return f"[skip]  {spec.run_id}: result exists"
-    ckpt_dir = results_dir / "checkpoints" / spec.run_id
+    ckpt_dir = results_dir / "checkpoints" / validate_run_id(spec.run_id)
     t0 = time.time()
     if not (ckpt_dir / "run.json").exists():
         train_run(spec, ckpt_dir, log=lambda *_: None)

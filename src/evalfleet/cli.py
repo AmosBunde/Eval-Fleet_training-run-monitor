@@ -18,9 +18,19 @@ def _add_monitor_options(p: argparse.ArgumentParser) -> None:
     p.add_argument("--first-look", type=int, default=8, help="index of the first monitored checkpoint (default 8)")
 
 
+def _checked(check, value):
+    """Run a validator and turn its ValueError into a clean command-line error."""
+    try:
+        return check(value)
+    except ValueError as err:
+        raise SystemExit(f"error: {err}") from None
+
+
 def cmd_train(args) -> None:
     from .faults import FaultSpec
-    from .train import RunSpec, TrainConfig, train_run
+    from .train import RunSpec, TrainConfig, train_run, validate_run_id
+
+    _checked(validate_run_id, args.run_id)
 
     if args.fault == "clean":
         fault = FaultSpec()
@@ -90,8 +100,11 @@ def cmd_report(args) -> None:
     from .monitor import monitor_result
     from .report import write_report
 
+    from .train import validate_run_id
+
     result = load_results(Path(args.run))
-    out = Path(args.out or f"{result.run_id}.html")
+    # The run id is read from the result file, so it is checked before it names a file.
+    out = Path(args.out or f"{_checked(validate_run_id, result.run_id)}.html")
     write_report(monitor_result(result, _monitor_config(args)), result.run_id, out)
     print(f"wrote {out}")
 

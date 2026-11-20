@@ -138,7 +138,7 @@ the file, so it assumes the run length is known in advance.
 | Figures | `src/evalfleet/figures.py` | Every figure in this README and the report |
 | HTML report | `src/evalfleet/report.py` | One self-contained `.html` per run |
 | Results | `results/runs/*.npz`, `results/summary.json` | Item-level results of all 48 runs (514 kB in total) and every number quoted here |
-| Tests | `tests/` | 59 tests |
+| Tests | `tests/` | 61 tests |
 
 ## Reproduce it
 
@@ -150,7 +150,7 @@ faster.
 git clone https://github.com/AmosBunde/Eval-Fleet_training-run-monitor
 cd Eval-Fleet_training-run-monitor
 uv sync --extra dev          # installs CPU PyTorch, NumPy, SciPy, Matplotlib, pytest
-uv run pytest -q             # 59 tests, 1 to 3 minutes
+uv run pytest -q             # 61 tests, 1 to 3 minutes
 ```
 
 The item-level results of my runs are in the repository, so steps 3 to 6 work straight
