@@ -1,4 +1,4 @@
-"""Command line: ``evalfleet <train|evaluate|matrix|monitor|export|summarise|figures>``."""
+"""Command line: ``evalfleet <train|evaluate|matrix|monitor|export|summarise|figures|report>``."""
 
 from __future__ import annotations
 
@@ -85,6 +85,16 @@ def cmd_figures(args) -> None:
     make_figures(Path(args.results), Path(args.out))
 
 
+def cmd_report(args) -> None:
+    from .evaluate import load_results
+    from .monitor import monitor_result
+    from .report import write_report
+
+    result = load_results(Path(args.run))
+    out = Path(args.out or f"{result.run_id}.html")
+    write_report(monitor_result(result, _monitor_config(args)), result.run_id, out)
+    print(f"wrote {out}")
+
 
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="evalfleet", description=__doc__)
@@ -136,6 +146,12 @@ def main(argv=None) -> None:
     p.add_argument("--results", default="results")
     p.add_argument("--out", default="docs/img")
     p.set_defaults(func=cmd_figures)
+
+    p = sub.add_parser("report", help="write a self-contained HTML report for one run")
+    p.add_argument("--run", required=True)
+    p.add_argument("--out")
+    _add_monitor_options(p)
+    p.set_defaults(func=cmd_report)
 
     args = parser.parse_args(argv)
     args.func(args)
