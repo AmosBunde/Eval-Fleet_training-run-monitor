@@ -1,10 +1,21 @@
-"""Command line: ``evalfleet <train|evaluate|matrix|export>``."""
+"""Command line: ``evalfleet <train|evaluate|matrix|monitor|export>``."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from pathlib import Path
+
+from .detectors import MonitorConfig
+
+
+def _monitor_config(args) -> MonitorConfig:
+    return MonitorConfig(alpha=args.alpha, first_look=args.first_look)
+
+
+def _add_monitor_options(p: argparse.ArgumentParser) -> None:
+    p.add_argument("--alpha", type=float, default=0.05, help="false-alarm budget per run (default 0.05)")
+    p.add_argument("--first-look", type=int, default=8, help="index of the first monitored checkpoint (default 8)")
 
 
 def cmd_train(args) -> None:
@@ -33,6 +44,19 @@ def cmd_matrix(args) -> None:
 
     run_matrix(Path(args.results), args.workers, args.only, args.keep_checkpoints)
 
+
+def cmd_monitor(args) -> None:
+    from .monitor import load_csv, monitor_result, monitor_run, text_summary
+
+    cfg = _monitor_config(args)
+    if args.csv:
+        score, steps, evals = load_csv(Path(args.csv))
+        report = monitor_run(score, steps, evals, config=cfg)
+    else:
+        from .evaluate import load_results
+
+        report = monitor_result(load_results(Path(args.run)), cfg)
+    print(text_summary(report))
 
 
 def cmd_export(args) -> None:
@@ -81,6 +105,13 @@ def main(argv=None) -> None:
     p.add_argument("--only", help="only runs whose id starts with this")
     p.add_argument("--keep-checkpoints", action="store_true")
     p.set_defaults(func=cmd_matrix)
+
+    p = sub.add_parser("monitor", help="run the monitor on one run and print alerts")
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--run", help="a result file written by evaluate")
+    g.add_argument("--csv", help="your own results: a CSV with columns step,eval,item,correct")
+    _add_monitor_options(p)
+    p.set_defaults(func=cmd_monitor)
 
     p = sub.add_parser("export", help="write a run's main-set results as a long CSV")
     p.add_argument("--run", required=True)
