@@ -1,0 +1,3309 @@
+{
+ "config": {
+  "monitor": {
+   "alpha": 0.05,
+   "first_look": 8,
+   "lags": [
+    1,
+    4
+   ],
+   "planned_looks": null,
+   "spending": "uniform",
+   "threshold_drop": 0.05,
+   "margin": 0.02,
+   "saturation_level": 0.98,
+   "saturation_window": 3,
+   "grader_tolerance": 0.005
+  },
+  "n_checkpoints": 30,
+  "n_evals": 8,
+  "n_items_per_set": 200,
+  "monitored_looks": 22,
+  "first_monitored_step": 720,
+  "tests_per_run_paired": 352,
+  "per_test_level_paired": 0.0001,
+  "evals": [
+   "copy",
+   "reverse",
+   "sort",
+   "depth",
+   "max",
+   "index",
+   "add",
+   "modadd"
+  ],
+  "train": {
+   "steps": 2400,
+   "ckpt_every": 80,
+   "batch_size": 64,
+   "lr": 0.002,
+   "warmup": 100,
+   "final_lr_frac": 0.2,
+   "weight_decay": 0.01,
+   "d_model": 64,
+   "n_layers": 2,
+   "n_heads": 4
+  }
+ },
+ "runs": {
+  "total": 48,
+  "by_kind": {
+   "clean": 18,
+   "contaminate": 6,
+   "corrupt": 6,
+   "grader_bug": 6,
+   "lr_spike": 6,
+   "remove": 6
+  },
+  "mean_train_seconds": 151.6125,
+  "mean_eval_seconds": 37.1854,
+  "total_compute_minutes": 151.0383
+ },
+ "false_alarms": {
+  "real_clean": {
+   "n_runs": 18,
+   "looks_per_run": 22,
+   "detectors": {
+    "threshold": {
+     "run_level": {
+      "count": 17,
+      "n": 18,
+      "rate": 0.9444,
+      "ci95": [
+       0.7424,
+       0.9901
+      ]
+     },
+     "false_alerts_per_run": 2.3333,
+     "evals_alarmed_per_run": 1.6111,
+     "cell_rate": 0.0133
+    },
+    "z_naive": {
+     "run_level": {
+      "count": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+       0.8241,
+       1.0
+      ]
+     },
+     "false_alerts_per_run": 3.9444,
+     "evals_alarmed_per_run": 3.0556,
+     "cell_rate": 0.0224
+    },
+    "z_seq": {
+     "run_level": {
+      "count": 1,
+      "n": 18,
+      "rate": 0.0556,
+      "ci95": [
+       0.0099,
+       0.2576
+      ]
+     },
+     "false_alerts_per_run": 0.0556,
+     "evals_alarmed_per_run": 0.0556,
+     "cell_rate": 0.0003
+    },
+    "mcnemar_seq": {
+     "run_level": {
+      "count": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+       0.0584,
+       0.3922
+      ]
+     },
+     "false_alerts_per_run": 0.1667,
+     "evals_alarmed_per_run": 0.1667,
+     "cell_rate": 0.0009
+    },
+    "mcnemar_confirm": {
+     "run_level": {
+      "count": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "false_alerts_per_run": 0.0,
+     "evals_alarmed_per_run": 0.0,
+     "cell_rate": 0.0
+    },
+    "mcnemar_bh": {
+     "run_level": {
+      "count": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+       0.0584,
+       0.3922
+      ]
+     },
+     "false_alerts_per_run": 0.1667,
+     "evals_alarmed_per_run": 0.1667,
+     "cell_rate": 0.0009
+    },
+    "evalue_seq": {
+     "run_level": {
+      "count": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "false_alerts_per_run": 0.0,
+     "evals_alarmed_per_run": 0.0,
+     "cell_rate": 0.0
+    }
+   },
+   "health": {
+    "contamination": {
+     "count": 0,
+     "n": 18,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1759
+     ]
+    },
+    "grader": {
+     "count": 0,
+     "n": 18,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1759
+     ]
+    }
+   }
+  },
+  "real_clean_twin_items": {
+   "n_runs": 18,
+   "looks_per_run": 22,
+   "detectors": {
+    "threshold": {
+     "run_level": {
+      "count": 17,
+      "n": 18,
+      "rate": 0.9444,
+      "ci95": [
+       0.7424,
+       0.9901
+      ]
+     },
+     "false_alerts_per_run": 2.1667,
+     "evals_alarmed_per_run": 1.7778,
+     "cell_rate": 0.0123
+    },
+    "z_naive": {
+     "run_level": {
+      "count": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+       0.8241,
+       1.0
+      ]
+     },
+     "false_alerts_per_run": 5.2778,
+     "evals_alarmed_per_run": 4.1667,
+     "cell_rate": 0.03
+    },
+    "z_seq": {
+     "run_level": {
+      "count": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+       0.0584,
+       0.3922
+      ]
+     },
+     "false_alerts_per_run": 0.1667,
+     "evals_alarmed_per_run": 0.1667,
+     "cell_rate": 0.0009
+    },
+    "mcnemar_seq": {
+     "run_level": {
+      "count": 4,
+      "n": 18,
+      "rate": 0.2222,
+      "ci95": [
+       0.09,
+       0.4521
+      ]
+     },
+     "false_alerts_per_run": 0.2778,
+     "evals_alarmed_per_run": 0.2778,
+     "cell_rate": 0.0016
+    },
+    "mcnemar_confirm": {
+     "run_level": {
+      "count": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "false_alerts_per_run": 0.0,
+     "evals_alarmed_per_run": 0.0,
+     "cell_rate": 0.0
+    },
+    "mcnemar_bh": {
+     "run_level": {
+      "count": 4,
+      "n": 18,
+      "rate": 0.2222,
+      "ci95": [
+       0.09,
+       0.4521
+      ]
+     },
+     "false_alerts_per_run": 0.2778,
+     "evals_alarmed_per_run": 0.2778,
+     "cell_rate": 0.0016
+    },
+    "evalue_seq": {
+     "run_level": {
+      "count": 1,
+      "n": 18,
+      "rate": 0.0556,
+      "ci95": [
+       0.0099,
+       0.2576
+      ]
+     },
+     "false_alerts_per_run": 0.0556,
+     "evals_alarmed_per_run": 0.0556,
+     "cell_rate": 0.0003
+    }
+   },
+   "health": {
+    "contamination": {
+     "count": 1,
+     "n": 18,
+     "rate": 0.0556,
+     "ci95": [
+      0.0099,
+      0.2576
+     ]
+    },
+    "grader": {
+     "count": 0,
+     "n": 18,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.1759
+     ]
+    }
+   }
+  },
+  "synthetic_null": {
+   "n_runs": 2000,
+   "eval_accuracies": [
+    0.995,
+    0.98,
+    0.95,
+    0.9,
+    0.75,
+    0.5,
+    0.2,
+    0.06
+   ],
+   "run_level": {
+    "threshold": {
+     "count": 1807,
+     "n": 2000,
+     "rate": 0.9035,
+     "ci95": [
+      0.8898,
+      0.9157
+     ]
+    },
+    "z_naive": {
+     "count": 770,
+     "n": 2000,
+     "rate": 0.385,
+     "ci95": [
+      0.3639,
+      0.4065
+     ]
+    },
+    "z_seq": {
+     "count": 0,
+     "n": 2000,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0019
+     ]
+    },
+    "mcnemar_seq": {
+     "count": 20,
+     "n": 2000,
+     "rate": 0.01,
+     "ci95": [
+      0.0065,
+      0.0154
+     ]
+    },
+    "mcnemar_confirm": {
+     "count": 0,
+     "n": 2000,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0019
+     ]
+    },
+    "mcnemar_bh": {
+     "count": 20,
+     "n": 2000,
+     "rate": 0.01,
+     "ci95": [
+      0.0065,
+      0.0154
+     ]
+    },
+    "evalue_seq": {
+     "count": 0,
+     "n": 2000,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0019
+     ]
+    },
+    "contamination": {
+     "count": 20,
+     "n": 2000,
+     "rate": 0.01,
+     "ci95": [
+      0.0065,
+      0.0154
+     ]
+    },
+    "grader": {
+     "count": 26,
+     "n": 2000,
+     "rate": 0.013,
+     "ci95": [
+      0.0089,
+      0.019
+     ]
+    }
+   }
+  }
+ },
+ "detection": {
+  "corrupt": {
+   "n_runs": 6,
+   "mean_true_effect": 0.3042,
+   "detectors": {
+    "threshold": {
+     "detected": 4,
+     "power": 0.6667,
+     "mean_delay_censored": 5.1667,
+     "mean_delay_ci95": [
+      1.0,
+      9.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 4
+    },
+    "z_naive": {
+     "detected": 5,
+     "power": 0.8333,
+     "mean_delay_censored": 3.1667,
+     "mean_delay_ci95": [
+      1.0,
+      7.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 5
+    },
+    "z_seq": {
+     "detected": 4,
+     "power": 0.6667,
+     "mean_delay_censored": 5.1667,
+     "mean_delay_ci95": [
+      1.0,
+      9.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 4
+    },
+    "mcnemar_seq": {
+     "detected": 4,
+     "power": 0.6667,
+     "mean_delay_censored": 5.1667,
+     "mean_delay_ci95": [
+      1.0,
+      9.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 4
+    },
+    "mcnemar_confirm": {
+     "detected": 3,
+     "power": 0.5,
+     "mean_delay_censored": 7.1667,
+     "mean_delay_ci95": [
+      3.3333,
+      11.3333
+     ],
+     "median_delay_when_detected": 2.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_bh": {
+     "detected": 4,
+     "power": 0.6667,
+     "mean_delay_censored": 5.1667,
+     "mean_delay_ci95": [
+      1.0,
+      9.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 4
+    },
+    "evalue_seq": {
+     "detected": 4,
+     "power": 0.6667,
+     "mean_delay_censored": 5.1667,
+     "mean_delay_ci95": [
+      1.0,
+      9.5
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 4
+    },
+    "contamination": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "grader": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    }
+   }
+  },
+  "remove": {
+   "n_runs": 6,
+   "mean_true_effect": 0.0395,
+   "detectors": {
+    "threshold": {
+     "detected": 2,
+     "power": 0.3333,
+     "mean_delay_censored": 11.6667,
+     "mean_delay_ci95": [
+      9.1667,
+      13.8333
+     ],
+     "median_delay_when_detected": 10.5,
+     "detected_at_first_checkpoint": 0
+    },
+    "z_naive": {
+     "detected": 3,
+     "power": 0.5,
+     "mean_delay_censored": 8.0,
+     "mean_delay_ci95": [
+      4.3333,
+      11.5
+     ],
+     "median_delay_when_detected": 3.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "z_seq": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_seq": {
+     "detected": 1,
+     "power": 0.1667,
+     "mean_delay_censored": 13.1667,
+     "mean_delay_ci95": [
+      11.6667,
+      14.5
+     ],
+     "median_delay_when_detected": 15.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_confirm": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_bh": {
+     "detected": 1,
+     "power": 0.1667,
+     "mean_delay_censored": 13.1667,
+     "mean_delay_ci95": [
+      11.6667,
+      14.5
+     ],
+     "median_delay_when_detected": 15.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "evalue_seq": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "contamination": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "grader": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    }
+   }
+  },
+  "lr_spike": {
+   "n_runs": 6,
+   "mean_true_effect": 0.3208,
+   "detectors": {
+    "threshold": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "z_naive": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "z_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "mcnemar_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "mcnemar_confirm": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 2.0,
+     "mean_delay_ci95": [
+      2.0,
+      2.0
+     ],
+     "median_delay_when_detected": 2.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_bh": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "evalue_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "contamination": {
+     "detected": 1,
+     "power": 0.1667,
+     "mean_delay_censored": 11.6667,
+     "mean_delay_ci95": [
+      9.0,
+      13.8333
+     ],
+     "median_delay_when_detected": 6.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "grader": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    }
+   }
+  },
+  "contaminate": {
+   "n_runs": 6,
+   "mean_true_effect": -0.0128,
+   "detectors": {
+    "threshold": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "z_naive": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "z_seq": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_seq": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_confirm": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_bh": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "evalue_seq": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "contamination": {
+     "detected": 5,
+     "power": 0.8333,
+     "mean_delay_censored": 8.0,
+     "mean_delay_ci95": [
+      5.1667,
+      11.3333
+     ],
+     "median_delay_when_detected": 6.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "grader": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    }
+   }
+  },
+  "grader_bug": {
+   "n_runs": 6,
+   "mean_true_effect": -0.0072,
+   "detectors": {
+    "threshold": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "z_naive": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "z_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "mcnemar_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "mcnemar_confirm": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 2.3333,
+     "mean_delay_ci95": [
+      2.0,
+      3.0
+     ],
+     "median_delay_when_detected": 2.0,
+     "detected_at_first_checkpoint": 0
+    },
+    "mcnemar_bh": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "evalue_seq": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    },
+    "contamination": {
+     "detected": 0,
+     "power": 0.0,
+     "mean_delay_censored": 13.3333,
+     "mean_delay_ci95": [
+      11.6667,
+      14.8333
+     ],
+     "median_delay_when_detected": null,
+     "detected_at_first_checkpoint": 0
+    },
+    "grader": {
+     "detected": 6,
+     "power": 1.0,
+     "mean_delay_censored": 1.0,
+     "mean_delay_ci95": [
+      1.0,
+      1.0
+     ],
+     "median_delay_when_detected": 1.0,
+     "detected_at_first_checkpoint": 6
+    }
+   }
+  }
+ },
+ "paired_vs_unpaired": {
+  "n_runs": 18,
+  "mean_delay_z_seq": 6.5,
+  "mean_delay_mcnemar_seq": 6.4444,
+  "mean_difference": 0.0556,
+  "difference_ci95": [
+   0.0,
+   0.1667
+  ],
+  "paired_earlier": 1,
+  "same": 17,
+  "paired_later": 0,
+  "without_corrupt": {
+   "n_runs": 12,
+   "mean_difference": 0.0833,
+   "difference_ci95": [
+    0.0,
+    0.25
+   ],
+   "paired_earlier": 1,
+   "same": 11,
+   "paired_later": 0
+  },
+  "operating_curve": {
+   "thresholds": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0001,
+    0.0001,
+    0.0002,
+    0.0003,
+    0.0004,
+    0.0006,
+    0.0009,
+    0.0015,
+    0.0023,
+    0.0036,
+    0.0055,
+    0.0086,
+    0.0133,
+    0.0207,
+    0.0322,
+    0.05
+   ],
+   "z": {
+    "clean_run_false_alarm": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0556,
+     0.0556,
+     0.1111,
+     0.1111,
+     0.1667,
+     0.2222,
+     0.3333,
+     0.3333,
+     0.5,
+     0.5,
+     0.5556,
+     0.6667,
+     0.7778,
+     0.8889,
+     1.0
+    ],
+    "mean_delay": [
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     5.9444,
+     5.4444,
+     5.4444,
+     4.7778,
+     4.7778,
+     4.1667,
+     4.1667,
+     4.1667,
+     4.1667,
+     4.1111,
+     4.0
+    ],
+    "power": [
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.6111,
+     0.6667,
+     0.6667,
+     0.7222,
+     0.7222,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778
+    ]
+   },
+   "mcnemar": {
+    "clean_run_false_alarm": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0556,
+     0.1111,
+     0.1667,
+     0.1667,
+     0.1667,
+     0.1667,
+     0.2778,
+     0.3333,
+     0.5,
+     0.5556,
+     0.5556,
+     0.6667,
+     0.7778,
+     0.8889,
+     0.8889,
+     0.9444
+    ],
+    "mean_delay": [
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.5,
+     6.4444,
+     6.4444,
+     6.4444,
+     6.4444,
+     6.4444,
+     6.4444,
+     6.4444,
+     5.8333,
+     5.8333,
+     5.8333,
+     5.2778,
+     4.8333,
+     4.8333,
+     4.8333,
+     4.0556,
+     4.0556,
+     4.0556,
+     4.0556,
+     4.0,
+     4.0
+    ],
+    "power": [
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.5556,
+     0.6111,
+     0.6111,
+     0.6111,
+     0.6111,
+     0.6111,
+     0.6111,
+     0.6111,
+     0.6667,
+     0.6667,
+     0.6667,
+     0.7222,
+     0.7222,
+     0.7222,
+     0.7222,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778,
+     0.7778
+    ]
+   },
+   "matched": {
+    "0.125": {
+     "z": {
+      "threshold": 0.0004,
+      "clean_run_false_alarm": 0.1111,
+      "mean_delay": 6.5,
+      "power": 0.5556
+     },
+     "mcnemar": {
+      "threshold": 0.0001,
+      "clean_run_false_alarm": 0.1111,
+      "mean_delay": 6.4444,
+      "power": 0.6111
+     }
+    },
+    "0.25": {
+     "z": {
+      "threshold": 0.0009,
+      "clean_run_false_alarm": 0.2222,
+      "mean_delay": 5.4444,
+      "power": 0.6667
+     },
+     "mcnemar": {
+      "threshold": 0.0006,
+      "clean_run_false_alarm": 0.1667,
+      "mean_delay": 5.8333,
+      "power": 0.6667
+     }
+    },
+    "0.5": {
+     "z": {
+      "threshold": 0.0055,
+      "clean_run_false_alarm": 0.5,
+      "mean_delay": 4.1667,
+      "power": 0.7778
+     },
+     "mcnemar": {
+      "threshold": 0.0023,
+      "clean_run_false_alarm": 0.5,
+      "mean_delay": 4.8333,
+      "power": 0.7222
+     }
+    }
+   }
+  }
+ },
+ "by_true_effect": {
+  "effect_floor": 0.05,
+  "took_effect": {
+   "n_runs": 11,
+   "by_kind": {
+    "corrupt": 4,
+    "lr_spike": 6,
+    "remove": 1
+   },
+   "mean_true_effect": 0.3455,
+   "detectors": {
+    "threshold": {
+     "detected": 11,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 2.2727
+    },
+    "z_naive": {
+     "detected": 11,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 1.5455
+    },
+    "z_seq": {
+     "detected": 10,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 2.3636
+    },
+    "mcnemar_seq": {
+     "detected": 11,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 2.2727
+    },
+    "mcnemar_confirm": {
+     "detected": 9,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 4.0
+    },
+    "mcnemar_bh": {
+     "detected": 11,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 2.2727
+    },
+    "evalue_seq": {
+     "detected": 10,
+     "detected_at_first_checkpoint": 10,
+     "mean_delay_censored": 2.3636
+    }
+   }
+  },
+  "little_or_no_effect": {
+   "n_runs": 7,
+   "by_kind": {
+    "corrupt": 2,
+    "remove": 5
+   },
+   "mean_true_effect": 0.0267,
+   "detectors": {
+    "threshold": {
+     "detected": 1,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 11.7143
+    },
+    "z_naive": {
+     "detected": 3,
+     "detected_at_first_checkpoint": 1,
+     "mean_delay_censored": 8.0
+    },
+    "z_seq": {
+     "detected": 0,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 13.0
+    },
+    "mcnemar_seq": {
+     "detected": 0,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 13.0
+    },
+    "mcnemar_confirm": {
+     "detected": 0,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 13.0
+    },
+    "mcnemar_bh": {
+     "detected": 0,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 13.0
+    },
+    "evalue_seq": {
+     "detected": 0,
+     "detected_at_first_checkpoint": 0,
+     "mean_delay_censored": 13.0
+    }
+   }
+  },
+  "largest_effect_missed_by_mcnemar_seq": 0.0471,
+  "smallest_effect_caught_by_mcnemar_seq": 0.0637
+ },
+ "pooled_items": {
+  "n_items": 400,
+  "regression_runs": 18,
+  "detected": 15,
+  "mean_delay_censored": 3.7778,
+  "clean_runs_alarmed": {
+   "count": 7,
+   "n": 18,
+   "rate": 0.3889,
+   "ci95": [
+    0.2031,
+    0.6138
+   ]
+  },
+  "min_detectable_drop": 0.0325
+ },
+ "planted_drops": {
+  "drop_at_step": 1360,
+  "window": 4,
+  "sizes": {
+   "0": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.0,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.0,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "1": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.0,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.0,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "2": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.011,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.011,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "3": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.044,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.044,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "4": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.0879,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.011,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.0879,
+     "z_seq": 0.0,
+     "mcnemar_seq": 0.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "5": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.6264,
+     "z_seq": 0.033,
+     "mcnemar_seq": 0.0549,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.6264,
+     "z_seq": 0.022,
+     "mcnemar_seq": 0.033,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "6": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.9231,
+     "z_seq": 0.2637,
+     "mcnemar_seq": 0.3846,
+     "mcnemar_confirm": 0.033,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.9231,
+     "z_seq": 0.0659,
+     "mcnemar_seq": 0.1209,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "8": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 0.989,
+     "z_seq": 0.8242,
+     "mcnemar_seq": 0.9011,
+     "mcnemar_confirm": 0.7582,
+     "evalue_seq": 0.0
+    },
+    "caught_at_once": {
+     "threshold": 0.989,
+     "z_seq": 0.7253,
+     "mcnemar_seq": 0.8242,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.0
+    }
+   },
+   "10": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 1.0,
+     "z_seq": 0.9121,
+     "mcnemar_seq": 0.9341,
+     "mcnemar_confirm": 0.8462,
+     "evalue_seq": 0.0659
+    },
+    "caught_at_once": {
+     "threshold": 1.0,
+     "z_seq": 0.8901,
+     "mcnemar_seq": 0.9231,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.044
+    }
+   },
+   "15": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 1.0,
+     "z_seq": 0.989,
+     "mcnemar_seq": 0.989,
+     "mcnemar_confirm": 0.9231,
+     "evalue_seq": 0.9231
+    },
+    "caught_at_once": {
+     "threshold": 1.0,
+     "z_seq": 0.978,
+     "mcnemar_seq": 0.978,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.9121
+    }
+   },
+   "20": {
+    "n_cases": 91,
+    "caught_within_window": {
+     "threshold": 1.0,
+     "z_seq": 1.0,
+     "mcnemar_seq": 1.0,
+     "mcnemar_confirm": 0.978,
+     "evalue_seq": 0.978
+    },
+    "caught_at_once": {
+     "threshold": 1.0,
+     "z_seq": 1.0,
+     "mcnemar_seq": 1.0,
+     "mcnemar_confirm": 0.0,
+     "evalue_seq": 0.967
+    }
+   }
+  },
+  "smallest_drop_caught_9_times_in_10": {
+   "threshold": 6,
+   "z_seq": 10,
+   "mcnemar_seq": 8,
+   "mcnemar_confirm": 15,
+   "evalue_seq": 15
+  }
+ },
+ "attribution": {
+  "clean": {
+   "model": 3,
+   "grader": 0,
+   "contamination": 0,
+   "mixed": 0,
+   "none": 15,
+   "n_runs": 18
+  },
+  "contaminate": {
+   "model": 0,
+   "grader": 0,
+   "contamination": 5,
+   "mixed": 0,
+   "none": 1,
+   "n_runs": 6
+  },
+  "corrupt": {
+   "model": 4,
+   "grader": 0,
+   "contamination": 0,
+   "mixed": 0,
+   "none": 2,
+   "n_runs": 6
+  },
+  "grader_bug": {
+   "model": 0,
+   "grader": 5,
+   "contamination": 0,
+   "mixed": 1,
+   "none": 0,
+   "n_runs": 6
+  },
+  "lr_spike": {
+   "model": 5,
+   "grader": 0,
+   "contamination": 0,
+   "mixed": 1,
+   "none": 0,
+   "n_runs": 6
+  },
+  "remove": {
+   "model": 1,
+   "grader": 0,
+   "contamination": 0,
+   "mixed": 0,
+   "none": 5,
+   "n_runs": 6
+  },
+  "measurement_faults_blamed_on_eval": {
+   "count": 10,
+   "n": 12,
+   "rate": 0.8333,
+   "ci95": [
+    0.552,
+    0.953
+   ]
+  },
+  "measurement_faults_blamed_on_model": {
+   "count": 1,
+   "n": 12,
+   "rate": 0.0833,
+   "ci95": [
+    0.0149,
+    0.3539
+   ]
+  },
+  "real_regressions_blamed_on_eval": {
+   "count": 1,
+   "n": 18,
+   "rate": 0.0556,
+   "ci95": [
+    0.0099,
+    0.2576
+   ]
+  },
+  "real_regressions_blamed_on_model": {
+   "count": 10,
+   "n": 18,
+   "rate": 0.5556,
+   "ci95": [
+    0.3372,
+    0.7544
+   ]
+  }
+ },
+ "small_evals": {
+  "repeats": 20,
+  "sizes": {
+   "25": {
+    "clean_alerts/mcnemar_seq": 0.0,
+    "clean_alerts/threshold": 9.8667,
+    "clean_alerts/z_naive": 1.5806,
+    "clean_fa/mcnemar_seq": 0.0,
+    "clean_fa/threshold": 1.0,
+    "clean_fa/z_naive": 0.7944,
+    "delay/all": 11.1417,
+    "delay/corrupt": 8.825,
+    "delay/lr_spike": 11.2667,
+    "delay/remove": 13.3333,
+    "power/all": 0.1611,
+    "power/corrupt": 0.3167,
+    "power/lr_spike": 0.1667,
+    "power/remove": 0.0,
+    "min_detectable_drop": 0.52,
+    "median_reliability_clean": 0.2694
+   },
+   "50": {
+    "clean_alerts/mcnemar_seq": 0.0,
+    "clean_alerts/threshold": 8.6167,
+    "clean_alerts/z_naive": 2.7222,
+    "clean_fa/mcnemar_seq": 0.0,
+    "clean_fa/threshold": 1.0,
+    "clean_fa/z_naive": 0.9333,
+    "delay/all": 7.5972,
+    "delay/corrupt": 7.225,
+    "delay/lr_spike": 2.2333,
+    "delay/remove": 13.3333,
+    "power/all": 0.45,
+    "power/corrupt": 0.475,
+    "power/lr_spike": 0.875,
+    "power/remove": 0.0,
+    "min_detectable_drop": 0.26,
+    "median_reliability_clean": 0.4674
+   },
+   "100": {
+    "clean_alerts/mcnemar_seq": 0.0083,
+    "clean_alerts/threshold": 5.0861,
+    "clean_alerts/z_naive": 3.2028,
+    "clean_fa/mcnemar_seq": 0.0083,
+    "clean_fa/threshold": 0.9917,
+    "clean_fa/z_naive": 0.9528,
+    "delay/all": 6.5083,
+    "delay/corrupt": 5.1917,
+    "delay/lr_spike": 1.0,
+    "delay/remove": 13.3333,
+    "power/all": 0.5556,
+    "power/corrupt": 0.6667,
+    "power/lr_spike": 1.0,
+    "power/remove": 0.0,
+    "min_detectable_drop": 0.13,
+    "median_reliability_clean": 0.6062
+   },
+   "200": {
+    "clean_alerts/mcnemar_seq": 0.1667,
+    "clean_alerts/threshold": 2.3333,
+    "clean_alerts/z_naive": 3.9444,
+    "clean_fa/mcnemar_seq": 0.1667,
+    "clean_fa/threshold": 0.9444,
+    "clean_fa/z_naive": 1.0,
+    "delay/all": 6.4444,
+    "delay/corrupt": 5.1667,
+    "delay/lr_spike": 1.0,
+    "delay/remove": 13.1667,
+    "power/all": 0.6111,
+    "power/corrupt": 0.6667,
+    "power/lr_spike": 1.0,
+    "power/remove": 0.1667,
+    "min_detectable_drop": 0.065,
+    "median_reliability_clean": 0.6953
+   }
+  }
+ },
+ "health": {
+  "saturation_flags": 95,
+  "saturation_confirmed_by_twin": {
+   "count": 95,
+   "n": 95,
+   "rate": 1.0,
+   "ci95": [
+    0.9611,
+    1.0
+   ]
+  },
+  "evals": {
+   "copy": {
+    "saturated_runs": 18,
+    "n_runs": 18,
+    "median_reliability": 0.6341,
+    "mean_final_score": 0.9989
+   },
+   "reverse": {
+    "saturated_runs": 18,
+    "n_runs": 18,
+    "median_reliability": 0.6008,
+    "mean_final_score": 0.9994
+   },
+   "sort": {
+    "saturated_runs": 10,
+    "n_runs": 18,
+    "median_reliability": 0.9671,
+    "mean_final_score": 0.9844
+   },
+   "depth": {
+    "saturated_runs": 13,
+    "n_runs": 18,
+    "median_reliability": 0.9492,
+    "mean_final_score": 0.9764
+   },
+   "max": {
+    "saturated_runs": 18,
+    "n_runs": 18,
+    "median_reliability": 0.5225,
+    "mean_final_score": 0.9978
+   },
+   "index": {
+    "saturated_runs": 18,
+    "n_runs": 18,
+    "median_reliability": 0.823,
+    "mean_final_score": 0.9992
+   },
+   "add": {
+    "saturated_runs": 0,
+    "n_runs": 18,
+    "median_reliability": 0.6383,
+    "mean_final_score": 0.1408
+   },
+   "modadd": {
+    "saturated_runs": 0,
+    "n_runs": 18,
+    "median_reliability": -0.3488,
+    "mean_final_score": 0.0575
+   }
+  }
+ },
+ "per_run": [
+  {
+   "run_id": "clean-00",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 86.7,
+   "eval_seconds": 20.3,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-01",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 91.6,
+   "eval_seconds": 21.5,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-02",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 90.0,
+   "eval_seconds": 20.4,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-03",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 147.6,
+   "eval_seconds": 41.9,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-04",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 146.4,
+   "eval_seconds": 41.1,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-05",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 153.3,
+   "eval_seconds": 42.9,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-06",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 149.3,
+   "eval_seconds": 37.4,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-07",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 152.2,
+   "eval_seconds": 35.8,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-08",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 148.0,
+   "eval_seconds": 38.2,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-09",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 153.4,
+   "eval_seconds": 40.9,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ]
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "clean-10",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 155.6,
+   "eval_seconds": 41.5,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-11",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 158.6,
+   "eval_seconds": 40.0,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-12",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 155.3,
+   "eval_seconds": 34.1,
+   "verdicts": {
+    "depth": [
+     "model_regression"
+    ]
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "clean-13",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 155.3,
+   "eval_seconds": 34.0,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-14",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 151.3,
+   "eval_seconds": 34.4,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ]
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "clean-15",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 138.7,
+   "eval_seconds": 35.0,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-16",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 137.9,
+   "eval_seconds": 32.1,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "clean-17",
+   "kind": "clean",
+   "skill": null,
+   "onset_step": null,
+   "onset_index": null,
+   "train_seconds": 144.0,
+   "eval_seconds": 31.7,
+   "verdicts": {},
+   "attribution": "none"
+  },
+  {
+   "run_id": "contaminate-00",
+   "kind": "contaminate",
+   "skill": "add",
+   "onset_step": 1200,
+   "onset_index": 14,
+   "train_seconds": 253.8,
+   "eval_seconds": 34.2,
+   "verdicts": {
+    "add": [
+     "contamination"
+    ]
+   },
+   "true_effect": -0.0447,
+   "checkpoints_after_onset": 15,
+   "delay": {
+    "threshold": 16,
+    "z_naive": 16,
+    "z_seq": 16,
+    "mcnemar_seq": 16,
+    "mcnemar_confirm": 16,
+    "mcnemar_bh": 16,
+    "evalue_seq": 16,
+    "contamination": 4,
+    "grader": 16
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "contamination"
+  },
+  {
+   "run_id": "contaminate-01",
+   "kind": "contaminate",
+   "skill": "modadd",
+   "onset_step": 1440,
+   "onset_index": 17,
+   "train_seconds": 235.6,
+   "eval_seconds": 32.6,
+   "verdicts": {
+    "modadd": [
+     "contamination"
+    ]
+   },
+   "true_effect": 0.0183,
+   "checkpoints_after_onset": 12,
+   "delay": {
+    "threshold": 13,
+    "z_naive": 13,
+    "z_seq": 13,
+    "mcnemar_seq": 13,
+    "mcnemar_confirm": 13,
+    "mcnemar_bh": 13,
+    "evalue_seq": 13,
+    "contamination": 9,
+    "grader": 13
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "contamination"
+  },
+  {
+   "run_id": "contaminate-02",
+   "kind": "contaminate",
+   "skill": "add",
+   "onset_step": 1680,
+   "onset_index": 20,
+   "train_seconds": 207.8,
+   "eval_seconds": 33.1,
+   "verdicts": {
+    "add": [
+     "contamination"
+    ]
+   },
+   "true_effect": 0.0078,
+   "checkpoints_after_onset": 9,
+   "delay": {
+    "threshold": 10,
+    "z_naive": 10,
+    "z_seq": 10,
+    "mcnemar_seq": 10,
+    "mcnemar_confirm": 10,
+    "mcnemar_bh": 10,
+    "evalue_seq": 10,
+    "contamination": 6,
+    "grader": 10
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "contamination"
+  },
+  {
+   "run_id": "contaminate-03",
+   "kind": "contaminate",
+   "skill": "modadd",
+   "onset_step": 1280,
+   "onset_index": 15,
+   "train_seconds": 136.3,
+   "eval_seconds": 31.9,
+   "verdicts": {},
+   "true_effect": -0.0064,
+   "checkpoints_after_onset": 14,
+   "delay": {
+    "threshold": 15,
+    "z_naive": 15,
+    "z_seq": 15,
+    "mcnemar_seq": 15,
+    "mcnemar_confirm": 15,
+    "mcnemar_bh": 15,
+    "evalue_seq": 15,
+    "contamination": 15,
+    "grader": 15
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "contaminate-04",
+   "kind": "contaminate",
+   "skill": "add",
+   "onset_step": 1520,
+   "onset_index": 18,
+   "train_seconds": 138.1,
+   "eval_seconds": 32.3,
+   "verdicts": {
+    "add": [
+     "contamination"
+    ]
+   },
+   "true_effect": -0.0677,
+   "checkpoints_after_onset": 11,
+   "delay": {
+    "threshold": 12,
+    "z_naive": 12,
+    "z_seq": 12,
+    "mcnemar_seq": 12,
+    "mcnemar_confirm": 12,
+    "mcnemar_bh": 12,
+    "evalue_seq": 12,
+    "contamination": 4,
+    "grader": 12
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "contamination"
+  },
+  {
+   "run_id": "contaminate-05",
+   "kind": "contaminate",
+   "skill": "modadd",
+   "onset_step": 1360,
+   "onset_index": 16,
+   "train_seconds": 133.9,
+   "eval_seconds": 31.2,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "modadd": [
+     "contamination"
+    ]
+   },
+   "true_effect": 0.0158,
+   "checkpoints_after_onset": 13,
+   "delay": {
+    "threshold": 14,
+    "z_naive": 14,
+    "z_seq": 14,
+    "mcnemar_seq": 14,
+    "mcnemar_confirm": 14,
+    "mcnemar_bh": 14,
+    "evalue_seq": 14,
+    "contamination": 10,
+    "grader": 14
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "contamination"
+  },
+  {
+   "run_id": "corrupt-00",
+   "kind": "corrupt",
+   "skill": "copy",
+   "onset_step": 1200,
+   "onset_index": 14,
+   "train_seconds": 132.2,
+   "eval_seconds": 30.9,
+   "verdicts": {
+    "copy": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.991,
+   "checkpoints_after_onset": 15,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 16,
+    "grader": 16
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "corrupt-01",
+   "kind": "corrupt",
+   "skill": "reverse",
+   "onset_step": 1440,
+   "onset_index": 17,
+   "train_seconds": 136.0,
+   "eval_seconds": 31.5,
+   "verdicts": {},
+   "true_effect": 0.0137,
+   "checkpoints_after_onset": 12,
+   "delay": {
+    "threshold": 13,
+    "z_naive": 1,
+    "z_seq": 13,
+    "mcnemar_seq": 13,
+    "mcnemar_confirm": 13,
+    "mcnemar_bh": 13,
+    "evalue_seq": 13,
+    "contamination": 13,
+    "grader": 13
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": true,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "corrupt-02",
+   "kind": "corrupt",
+   "skill": "sort",
+   "onset_step": 1680,
+   "onset_index": 20,
+   "train_seconds": 134.8,
+   "eval_seconds": 33.5,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ],
+    "max": [
+     "grader_fault",
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.075,
+   "checkpoints_after_onset": 9,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 10,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 10,
+    "grader": 10
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "corrupt-03",
+   "kind": "corrupt",
+   "skill": "depth",
+   "onset_step": 1280,
+   "onset_index": 15,
+   "train_seconds": 137.4,
+   "eval_seconds": 33.5,
+   "verdicts": {
+    "depth": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.6346,
+   "checkpoints_after_onset": 14,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 15,
+    "grader": 15
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "corrupt-04",
+   "kind": "corrupt",
+   "skill": "max",
+   "onset_step": 1520,
+   "onset_index": 18,
+   "train_seconds": 136.5,
+   "eval_seconds": 34.2,
+   "verdicts": {
+    "depth": [
+     "grader_fault"
+    ],
+    "max": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.1109,
+   "checkpoints_after_onset": 11,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 12,
+    "grader": 12
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "corrupt-05",
+   "kind": "corrupt",
+   "skill": "index",
+   "onset_step": 1360,
+   "onset_index": 16,
+   "train_seconds": 137.7,
+   "eval_seconds": 33.8,
+   "verdicts": {},
+   "true_effect": 0.0,
+   "checkpoints_after_onset": 13,
+   "delay": {
+    "threshold": 14,
+    "z_naive": 14,
+    "z_seq": 14,
+    "mcnemar_seq": 14,
+    "mcnemar_confirm": 14,
+    "mcnemar_bh": 14,
+    "evalue_seq": 14,
+    "contamination": 14,
+    "grader": 14
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "grader_bug-00",
+   "kind": "grader_bug",
+   "skill": "copy",
+   "onset_step": 1200,
+   "onset_index": 14,
+   "train_seconds": 132.4,
+   "eval_seconds": 23.0,
+   "verdicts": {
+    "copy": [
+     "grader_fault"
+    ]
+   },
+   "true_effect": -0.003,
+   "checkpoints_after_onset": 15,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 16,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "grader"
+  },
+  {
+   "run_id": "grader_bug-01",
+   "kind": "grader_bug",
+   "skill": "reverse",
+   "onset_step": 1440,
+   "onset_index": 17,
+   "train_seconds": 132.8,
+   "eval_seconds": 22.3,
+   "verdicts": {
+    "reverse": [
+     "grader_fault"
+    ]
+   },
+   "true_effect": -0.0042,
+   "checkpoints_after_onset": 12,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 13,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "grader"
+  },
+  {
+   "run_id": "grader_bug-02",
+   "kind": "grader_bug",
+   "skill": "sort",
+   "onset_step": 1680,
+   "onset_index": 20,
+   "train_seconds": 124.8,
+   "eval_seconds": 20.1,
+   "verdicts": {
+    "sort": [
+     "grader_fault",
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.0061,
+   "checkpoints_after_onset": 9,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 10,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "mixed"
+  },
+  {
+   "run_id": "grader_bug-03",
+   "kind": "grader_bug",
+   "skill": "copy",
+   "onset_step": 1280,
+   "onset_index": 15,
+   "train_seconds": 95.5,
+   "eval_seconds": 23.6,
+   "verdicts": {
+    "copy": [
+     "grader_fault"
+    ]
+   },
+   "true_effect": 0.0007,
+   "checkpoints_after_onset": 14,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 15,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "grader"
+  },
+  {
+   "run_id": "grader_bug-04",
+   "kind": "grader_bug",
+   "skill": "reverse",
+   "onset_step": 1520,
+   "onset_index": 18,
+   "train_seconds": 95.7,
+   "eval_seconds": 24.9,
+   "verdicts": {
+    "reverse": [
+     "grader_fault"
+    ]
+   },
+   "true_effect": -0.0005,
+   "checkpoints_after_onset": 11,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 12,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "grader"
+  },
+  {
+   "run_id": "grader_bug-05",
+   "kind": "grader_bug",
+   "skill": "sort",
+   "onset_step": 1360,
+   "onset_index": 16,
+   "train_seconds": 97.4,
+   "eval_seconds": 25.5,
+   "verdicts": {
+    "sort": [
+     "grader_fault"
+    ],
+    "depth": [
+     "model_regression"
+    ]
+   },
+   "true_effect": -0.0427,
+   "checkpoints_after_onset": 13,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 4,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 14,
+    "grader": 1
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": true
+   },
+   "attribution": "grader"
+  },
+  {
+   "run_id": "lr_spike-00",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1200,
+   "onset_index": 14,
+   "train_seconds": 131.9,
+   "eval_seconds": 51.7,
+   "verdicts": {
+    "sort": [
+     "contamination",
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ],
+    "index": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.325,
+   "checkpoints_after_onset": 15,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 6,
+    "grader": 16
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": true,
+    "grader": false
+   },
+   "attribution": "mixed"
+  },
+  {
+   "run_id": "lr_spike-01",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1440,
+   "onset_index": 17,
+   "train_seconds": 136.3,
+   "eval_seconds": 64.4,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.385,
+   "checkpoints_after_onset": 12,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 13,
+    "grader": 13
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "lr_spike-02",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1680,
+   "onset_index": 20,
+   "train_seconds": 152.7,
+   "eval_seconds": 74.3,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ],
+    "index": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.25,
+   "checkpoints_after_onset": 9,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 10,
+    "grader": 10
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "lr_spike-03",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1280,
+   "onset_index": 15,
+   "train_seconds": 305.8,
+   "eval_seconds": 82.3,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ],
+    "index": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.345,
+   "checkpoints_after_onset": 14,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 15,
+    "grader": 15
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "lr_spike-04",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1520,
+   "onset_index": 18,
+   "train_seconds": 303.0,
+   "eval_seconds": 82.6,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.28,
+   "checkpoints_after_onset": 11,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 12,
+    "grader": 12
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "lr_spike-05",
+   "kind": "lr_spike",
+   "skill": null,
+   "onset_step": 1360,
+   "onset_index": 16,
+   "train_seconds": 316.9,
+   "eval_seconds": 81.1,
+   "verdicts": {
+    "sort": [
+     "model_regression"
+    ],
+    "depth": [
+     "model_regression"
+    ],
+    "max": [
+     "model_regression"
+    ],
+    "index": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.34,
+   "checkpoints_after_onset": 13,
+   "delay": {
+    "threshold": 1,
+    "z_naive": 1,
+    "z_seq": 1,
+    "mcnemar_seq": 1,
+    "mcnemar_confirm": 2,
+    "mcnemar_bh": 1,
+    "evalue_seq": 1,
+    "contamination": 14,
+    "grader": 14
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": true,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": true,
+    "mcnemar_bh": true,
+    "evalue_seq": true,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "remove-00",
+   "kind": "remove",
+   "skill": "copy",
+   "onset_step": 1200,
+   "onset_index": 14,
+   "train_seconds": 133.4,
+   "eval_seconds": 32.6,
+   "verdicts": {
+    "copy": [
+     "model_regression"
+    ],
+    "sort": [
+     "model_regression"
+    ]
+   },
+   "true_effect": 0.0637,
+   "checkpoints_after_onset": 15,
+   "delay": {
+    "threshold": 15,
+    "z_naive": 7,
+    "z_seq": 16,
+    "mcnemar_seq": 15,
+    "mcnemar_confirm": 16,
+    "mcnemar_bh": 15,
+    "evalue_seq": 16,
+    "contamination": 16,
+    "grader": 16
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": false,
+    "mcnemar_seq": true,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": true,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "model"
+  },
+  {
+   "run_id": "remove-01",
+   "kind": "remove",
+   "skill": "reverse",
+   "onset_step": 1440,
+   "onset_index": 17,
+   "train_seconds": 135.9,
+   "eval_seconds": 32.0,
+   "verdicts": {},
+   "true_effect": 0.0404,
+   "checkpoints_after_onset": 12,
+   "delay": {
+    "threshold": 13,
+    "z_naive": 3,
+    "z_seq": 13,
+    "mcnemar_seq": 13,
+    "mcnemar_confirm": 13,
+    "mcnemar_bh": 13,
+    "evalue_seq": 13,
+    "contamination": 13,
+    "grader": 13
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": true,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "remove-02",
+   "kind": "remove",
+   "skill": "sort",
+   "onset_step": 1680,
+   "onset_index": 20,
+   "train_seconds": 136.0,
+   "eval_seconds": 32.4,
+   "verdicts": {},
+   "true_effect": 0.0383,
+   "checkpoints_after_onset": 9,
+   "delay": {
+    "threshold": 10,
+    "z_naive": 10,
+    "z_seq": 10,
+    "mcnemar_seq": 10,
+    "mcnemar_confirm": 10,
+    "mcnemar_bh": 10,
+    "evalue_seq": 10,
+    "contamination": 10,
+    "grader": 10
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "remove-03",
+   "kind": "remove",
+   "skill": "depth",
+   "onset_step": 1280,
+   "onset_index": 15,
+   "train_seconds": 136.0,
+   "eval_seconds": 32.6,
+   "verdicts": {},
+   "true_effect": 0.0471,
+   "checkpoints_after_onset": 14,
+   "delay": {
+    "threshold": 6,
+    "z_naive": 2,
+    "z_seq": 15,
+    "mcnemar_seq": 15,
+    "mcnemar_confirm": 15,
+    "mcnemar_bh": 15,
+    "evalue_seq": 15,
+    "contamination": 15,
+    "grader": 15
+   },
+   "detected": {
+    "threshold": true,
+    "z_naive": true,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "remove-04",
+   "kind": "remove",
+   "skill": "max",
+   "onset_step": 1520,
+   "onset_index": 18,
+   "train_seconds": 137.2,
+   "eval_seconds": 32.0,
+   "verdicts": {},
+   "true_effect": 0.0127,
+   "checkpoints_after_onset": 11,
+   "delay": {
+    "threshold": 12,
+    "z_naive": 12,
+    "z_seq": 12,
+    "mcnemar_seq": 12,
+    "mcnemar_confirm": 12,
+    "mcnemar_bh": 12,
+    "evalue_seq": 12,
+    "contamination": 12,
+    "grader": 12
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  },
+  {
+   "run_id": "remove-05",
+   "kind": "remove",
+   "skill": "index",
+   "onset_step": 1360,
+   "onset_index": 16,
+   "train_seconds": 138.4,
+   "eval_seconds": 31.6,
+   "verdicts": {},
+   "true_effect": 0.0346,
+   "checkpoints_after_onset": 13,
+   "delay": {
+    "threshold": 14,
+    "z_naive": 14,
+    "z_seq": 14,
+    "mcnemar_seq": 14,
+    "mcnemar_confirm": 14,
+    "mcnemar_bh": 14,
+    "evalue_seq": 14,
+    "contamination": 14,
+    "grader": 14
+   },
+   "detected": {
+    "threshold": false,
+    "z_naive": false,
+    "z_seq": false,
+    "mcnemar_seq": false,
+    "mcnemar_confirm": false,
+    "mcnemar_bh": false,
+    "evalue_seq": false,
+    "contamination": false,
+    "grader": false
+   },
+   "attribution": "none"
+  }
+ ],
+ "hypotheses": {
+  "H1": {
+   "evidence": {
+    "threshold": 0.9444,
+    "z_naive": 1.0
+   },
+   "outcome": "supported"
+  },
+  "H2a": {
+   "evidence": {
+    "z_seq": 0.0,
+    "mcnemar_seq": 0.01,
+    "mcnemar_confirm": 0.0,
+    "mcnemar_bh": 0.01,
+    "evalue_seq": 0.0
+   },
+   "outcome": "supported"
+  },
+  "H2b": {
+   "evidence": {
+    "clean_runs_alarmed": 3,
+    "n": 18
+   },
+   "outcome": "supported"
+  },
+  "H2c": {
+   "evidence": {
+    "clean_runs_alarmed_confirm": 0,
+    "clean_runs_alarmed_plain": 3,
+    "extra_mean_delay": 1.0556
+   },
+   "outcome": "supported"
+  },
+  "H3": {
+   "evidence": {
+    "mean_difference": 0.0556,
+    "ci95": [
+     0.0,
+     0.1667
+    ],
+    "paired_no_later_at_matched_rates": false
+   },
+   "outcome": "failed"
+  },
+  "H4": {
+   "evidence": {
+    "corrupt_at_first_checkpoint": 4,
+    "remove_detected": 1,
+    "lr_spike_detected": 6
+   },
+   "outcome": "failed"
+  },
+  "H5": {
+   "evidence": {
+    "grader_bug_right": 5,
+    "contaminate_right": 5,
+    "real_regressions_blamed_on_eval": 1
+   },
+   "outcome": "failed"
+  },
+  "H6": {
+   "evidence": {
+    "remove_power_by_size": {
+     "25": 0.0,
+     "50": 0.0,
+     "100": 0.0,
+     "200": 0.1667
+    },
+    "threshold_clean_fa_by_size": {
+     "25": 1.0,
+     "50": 1.0,
+     "100": 0.9917,
+     "200": 0.9444
+    }
+   },
+   "outcome": "supported"
+  },
+  "H7": {
+   "evidence": {
+    "false_alerts_per_run_evalue": 0.0,
+    "false_alerts_per_run_mcnemar": 0.1667,
+    "extra_mean_delay": 0.0556
+   },
+   "outcome": "supported"
+  },
+  "H8": {
+   "evidence": {
+    "confirmed": 95,
+    "flags": 95
+   },
+   "outcome": "supported"
+  }
+ }
+}
