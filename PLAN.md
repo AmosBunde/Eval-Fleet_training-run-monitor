@@ -174,4 +174,26 @@ seconds per run, so the matrix should take 25 to 40 minutes.
 
 ## Amendments
 
-None yet.
+Written on 20 November 2026, after the matrix had run. None of these changes a
+hypothesis, a decision rule or a detector setting.
+
+1. **Wall time.** The matrix took 51 minutes, not the 25 to 40 planned. The machine was
+   busier than during the pilots: runs averaged 152 seconds of training and 37 seconds of
+   evaluation.
+2. **Many injected faults did not move the model.** Two of the six `corrupt` runs (50%
+   corruption of `reverse`, 25% of `index`) and five of the six `remove` runs changed the
+   twin-set score by less than 5 points. The pilots had only tried `corrupt` and `remove`
+   on `sort` and `reverse` at full strength, so I did not expect this. H4 is judged by its
+   written rule and fails. To separate "the monitor missed it" from "there was nothing to
+   see", I added a split of the regression runs by true effect (twin set, reference
+   grader, floor of 5 points). The split is post hoc and is reported as such.
+3. **Planted drops.** The injected faults turned out to be either large or negligible, so
+   the real runs could not say where the paired test starts to beat the unpaired one (H3).
+   I added an analysis that plants drops of exactly known size (1 to 20 points) in the
+   item-level results of the 18 clean runs and measures how often each detector catches
+   them. It is semi-synthetic: real trajectories, planted regression. It does not change
+   the verdict on H3, which fails by its written rule.
+4. **Pooled items.** I added one extra configuration, the primary detector run on main
+   and twin pooled into 400 items per eval, to see what more items buy. Post hoc.
+5. **The saturation, reliability and minimum-detectable-drop figures** are reported as
+   planned. H6 passes by its written rule, but for a dull reason, which the report states.

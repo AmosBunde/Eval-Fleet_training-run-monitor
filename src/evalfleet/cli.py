@@ -1,4 +1,4 @@
-"""Command line: ``evalfleet <train|evaluate|matrix|monitor|export>``."""
+"""Command line: ``evalfleet <train|evaluate|matrix|monitor|export|summarise|figures>``."""
 
 from __future__ import annotations
 
@@ -73,6 +73,16 @@ def cmd_export(args) -> None:
     print(f"wrote {args.csv}")
 
 
+def cmd_summarise(args) -> None:
+    from .study import summarise
+
+    summarise(Path(args.results))
+
+
+def cmd_figures(args) -> None:
+    from .figures import make_figures
+
+    make_figures(Path(args.results), Path(args.out))
 
 
 
@@ -117,6 +127,15 @@ def main(argv=None) -> None:
     p.add_argument("--run", required=True)
     p.add_argument("--csv", required=True)
     p.set_defaults(func=cmd_export)
+
+    p = sub.add_parser("summarise", help="score every detector and write results/summary.json")
+    p.add_argument("--results", default="results")
+    p.set_defaults(func=cmd_summarise)
+
+    p = sub.add_parser("figures", help="draw docs/img/*.png from the results")
+    p.add_argument("--results", default="results")
+    p.add_argument("--out", default="docs/img")
+    p.set_defaults(func=cmd_figures)
 
     args = parser.parse_args(argv)
     args.func(args)
