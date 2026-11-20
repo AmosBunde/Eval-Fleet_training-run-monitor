@@ -274,6 +274,30 @@ def load_csv(path: Path) -> tuple[np.ndarray, np.ndarray, tuple[str, ...]]:
     return score, np.asarray(steps), tuple(evals)
 
 
+def episodes(alerts: list[Alert]) -> list[tuple[Alert, int, int]]:
+    """Group alerts of one kind on one eval at consecutive checkpoints.
+
+    Returns (first alert, number of repeats, step of the last repeat) per episode.
+    """
+    out: list[tuple[Alert, int, int]] = []
+    by_key: dict[tuple[str, str], list[Alert]] = {}
+    for a in alerts:
+        by_key.setdefault((a.kind, a.eval), []).append(a)
+    for group in by_key.values():
+        group.sort(key=lambda a: a.index)
+        start, prev, count = group[0], group[0], 0
+        for a in group[1:]:
+            if a.index == prev.index + 1:
+                count += 1
+            else:
+                out.append((start, count, prev.step))
+                start, count = a, 0
+            prev = a
+        out.append((start, count, prev.step))
+    out.sort(key=lambda e: (e[0].index, e[0].eval, e[0].kind))
+    return out
+
+
 def text_summary(report: MonitorReport) -> str:
     """A terminal-friendly summary of a monitor report."""
     lines = [
@@ -287,6 +311,7 @@ def text_summary(report: MonitorReport) -> str:
         lines.append(f"{h.eval:<10}{100 * h.final_score:>6.1f}%  {h.reliability:>7.2f}  {verdict}{sat}")
     if not report.alerts:
         lines.append("No alerts.")
-    for a in report.alerts:
-        lines.append(f"[{a.kind} @ step {a.step}] {a.text}")
+    for a, repeats, last_step in episodes(report.alerts):
+        again = f" Raised again at the next {repeats} checkpoint(s), up to step {last_step}." if repeats else ""
+        lines.append(f"[{a.kind} @ step {a.step}] {a.text}{again}")
     return "\n".join(lines)

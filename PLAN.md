@@ -182,8 +182,8 @@ hypothesis, a decision rule or a detector setting.
    evaluation.
 2. **Many injected faults did not move the model.** Two of the six `corrupt` runs (50%
    corruption of `reverse`, 25% of `index`) and five of the six `remove` runs changed the
-   twin-set score by less than 5 points. The pilots had only tried `corrupt` and `remove`
-   on `sort` and `reverse` at full strength, so I did not expect this. H4 is judged by its
+   twin-set score by less than 5 points. The pilots had tried `corrupt` only on `reverse`
+   (100%) and `sort` (50%), and `remove` only on `sort`, so I did not expect this. H4 is judged by its
    written rule and fails. To separate "the monitor missed it" from "there was nothing to
    see", I added a split of the regression runs by true effect (twin set, reference
    grader, floor of 5 points). The split is post hoc and is reported as such.
